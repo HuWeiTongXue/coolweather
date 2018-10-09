@@ -1,9 +1,9 @@
 package com.rotai.coolweather;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,8 +15,6 @@ import com.rotai.coolweather.gson.Forecast;
 import com.rotai.coolweather.gson.Weather;
 import com.rotai.coolweather.util.HttpUtil;
 import com.rotai.coolweather.util.Utility;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -118,7 +116,7 @@ public class WeatherActivity extends AppCompatActivity {
         degressText.setText(degree);
         weatherInfoText.setText(weatherInfo);
         forecastLayout.removeAllViews();
-        for (Forecast forecast:weather.forcecastList){
+        for (Forecast forecast:weather.forecastList){
             View view = LayoutInflater.from(this).inflate
                     (R.layout.forecast_item, forecastLayout, false);
             TextView dateText = view.findViewById(R.id.date_text);
@@ -133,7 +131,7 @@ public class WeatherActivity extends AppCompatActivity {
         }
         if(weather.aqi!=null){
             aqiText.setText(weather.aqi.city.aqi);
-            pm25Text.setText(weather.aqi.city.pnm25);
+            pm25Text.setText(weather.aqi.city.pm25);
         }
         String comfort="舒适度："+weather.suggestion.comfort.info;
         String carwash="洗车指数："+weather.suggestion.carWash.info;
